@@ -3,7 +3,7 @@ package interfaces;
 import java.text.SimpleDateFormat;
 
 public interface DateValidator {
-    default boolean isValid(String dateStr) {
+    static boolean isValid(String dateStr) {
         SimpleDateFormat myFormat = new SimpleDateFormat("dd.MM.yyyy");
         myFormat.setLenient(false);
         try {

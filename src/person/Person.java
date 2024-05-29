@@ -1,6 +1,8 @@
 package person;
 
+import interfaces.DateValidator;
 import interfaces.InputFromUser;
+import interfaces.PhoneNumberValidator;
 
 public abstract class Person {
     private String firstName;
@@ -47,7 +49,9 @@ public abstract class Person {
     }
 
     public void setTelNumber(String telNumber) {
-        this.telNumber = telNumber;
+        if (PhoneNumberValidator.isValid(telNumber)) {
+            this.telNumber = telNumber;
+        }
     }
 
     public String getBirthDate() {
@@ -55,7 +59,9 @@ public abstract class Person {
     }
 
     public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+        if (DateValidator.isValid(birthDate)) {
+            this.birthDate = birthDate;
+        }
     }
 
     public String toString() {
@@ -63,11 +69,10 @@ public abstract class Person {
     }
 
     public void AddNewPerson(){
-        lastName = InputFromUser.inputText("Фамилия: ");
-        firstName = InputFromUser.inputText("Имя: ");
-        middleName = InputFromUser.inputText("Отчество: ");
-        birthDate = InputFromUser.inputText("Дата рождения: ");
-        telNumber = InputFromUser.inputText("Номер телефона: ");
-
+        setLastName(InputFromUser.inputText("Фамилия: "));
+        setFirstName(InputFromUser.inputText("Имя: "));
+        setMiddleName(InputFromUser.inputText("Отчество: "));
+        setBirthDate(InputFromUser.inputText("Дата рождения: "));
+        setTelNumber(InputFromUser.inputText("Номер телефона: "));
     }
 }
