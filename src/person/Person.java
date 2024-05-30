@@ -2,6 +2,7 @@ package person;
 
 import interfaces.DateValidator;
 import interfaces.InputFromUser;
+import interfaces.NamesValidator;
 import interfaces.PhoneNumberValidator;
 
 public abstract class Person {
@@ -25,7 +26,9 @@ public abstract class Person {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if (NamesValidator.isValid(middleName)) {
+            this.firstName = firstName;
+        }
     }
 
     public String getLastName() {
@@ -33,7 +36,9 @@ public abstract class Person {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if (NamesValidator.isValid(middleName)) {
+            this.lastName = lastName;
+        }
     }
 
     public String getMiddleName() {
@@ -41,7 +46,9 @@ public abstract class Person {
     }
 
     public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+        if (NamesValidator.isValid(middleName)){
+            this.middleName = middleName;
+        }
     }
 
     public String getTelNumber() {
